@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../day3/lib/vue.js"></script>
+</head>
+<body>
+    <!-- 全局的组件 -->
+    <div id="app">
+        <mycom3></mycom3>
+    </div>
+    <!-- 在被控制的#app外面，使用template元素，定义组件的HTML模板结构 -->
+    <template id="tmp1">
+        <div>
+            <h1>这是通过template元素，在外部定义的组件结构，这个方式，有代码的只能提示和高亮</h1>
+            <h4>呵呵哒</h4>
+            <p>{{msg}}</p>
+        </div>
+    </template>
+    <script>
+        // 1.组件可以有自己的data数据
+        // 2.组件的data和实例的data有点不一样，实例中的data可以成为一个对象，但是组件中的data必须是一个方法
+        // 3.组件中的data除了必须为一个方法之外，这个方法的返回值还必须为一个对象
+        // 4.组件中的data数据使用方式和实例中的data使用方式一样
+        Vue.component('mycom3',{
+            template: '#tmp1',
+            data: function(){
+                return {
+                    msg: '这是组件中data定义的数据'
+                }
+            }
+        });
+        var vm = new Vue({
+            el: "#app",
+            data:{
+                
+            },
+        }); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{ dt | dateFormat }}</p>
+    </div>
+    <script>
+        // 私有过滤器（不能写在methods中）
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                dt: new Date()
+            },
+            filters: {
+                dateFormat: function(value){
+                    var dt = new Date(value);
+                    var y = dt.getFullYear();
+                    var m = dt.getMonth();//月份是从0开始的所以需要加1
+                    var d = dt.getDate();
+                    return y+'年'+(m+1)+'月'+d+'日';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

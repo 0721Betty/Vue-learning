@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../day3/lib/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <mycomponent></mycomponent>
+    </div>
+    <script>
+        // var com1 = Vue.extend({
+        //     template:'<h3>我的第一个组件</h3>'
+        // });
+        // Vue.component('mycomponent',com1);
+        // var vm = new Vue({
+        //     el: "#app",
+        // });
+
+
+        // Vue.component第一个参数：组件的名称，将来在引用组件的时候，就是一个标签形式来引入它的
+        // 第二个参数：Vue.extend 创建的组件，其中template 就是组件将来要展示的HTML内容
+        Vue.component('mycomponent',Vue.extend({
+            template:'<h3>我的第一个组件</h3>'
+        }));
+        var vm = new Vue({
+            el: "#app",
+        });
+    </script>
+</body>
+</html>

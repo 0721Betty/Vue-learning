@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id= "app">
+        <!-- v-cloak解决插值表达式闪烁问题 即网速特别慢的时候页面不显示{{ msg }}-->
+        <p v-cloak>++++++++++{{ msg }}————————————</p>
+        <!-- 默认v-text是没有闪烁问题的 -->
+        <!--v-text会覆盖元素中原本的内容，但是差值表达式不会把整个元素的内容清空，只会覆盖自己的这个占位符-->
+        <h4 v-text="msg">=========</h4>
+    </div>
+    <script src= "https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                msg: '12345'
+            }
+        });
+    </script>
+</body>
+</html>

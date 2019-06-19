@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../day3/lib/vue.min.js"></script>
+    <script src="../day3/lib/vue-resource.js"></script>
+    <link rel="stylesheet" href="../day3/lib/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        
+        <div class="panel panel-primary">
+              <div class="panel-heading">
+                    <h3 class="panel-title">添加品牌</h3>
+              </div>
+              <div class="panel-body form-inline">
+                    <label for="">
+                        Name:
+                        <input type="text" v-model="name" class="form-control">
+                    </label>
+                    <input type="button" value="添加" @click="add" class="btn btn-primary">
+              </div>
+        </div>
+        
+
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Ctime</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in list" :key="item.id"> 
+                    <td>{{ item.id }}</td>
+                    <td v-text="item.name"></td>
+                    <td>{{ item.ctime}}</td>
+                    <td>
+                        <a href="#">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                list: [//存放所有品牌的列表数组
+                    { id: 1, name: '五菱宏光', ctime: new Date()},
+                    { id: 2, name: '众泰', ctime: new Date()}
+                ]
+            },
+            created() {//当vm实例的data和methods初始化完毕后，vm实例会自动执行created这个生命周期函数
+                this.getAllList();
+            },
+            methods: {
+                getAllList(){// 获取所有的品牌列表
+                    // 1.由于已经导入了Vue-resource这个包，所以可以直接通过this.$http来发起数据请求
+                    // 2.根据接口API文档，知道获取列表的时候，应该发起一个 get 请求
+                    // 3.this.$http.get('url').then(function(result){})
+                    // 4.当通过then指定回调函数之后，在回调函数中可以拿到数据服务器返回的result
+                    // 5.先判断result.status是否等于0，等于0就成功了，可以把result.message赋值给this.list
+                    // 如果不等于0，可以弹框提醒获取数据失败！
+
+                    this.$http.get('一个网址').then(result=>{
+                        // 注意：通过$http获取到的数据，都在result.body中放着
+                        var result = result.body
+                        if(result.status === 0){
+                            //成功了
+                            this.list = result.message;
+                        }else{
+                            //失败了
+                            alert('获取数据失败！');
+                        }
+                    })
+                },
+                add(){//添加品牌列表到后台服务器
+                // 1.通过查看数据API接口，发现要发送一个post请求，this.$http.post
+                // 2.
+                    
+                },
+            },
+        });
+        
+    </script>
+</body>
+</html>

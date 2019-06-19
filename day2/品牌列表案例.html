@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scrip, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="../day2/vue.js"></script> -->
+    <style>
+        tr,
+        td,
+        th {
+            border: 1px solid;
+            padding: 5px 20px;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加品牌</h3>
+            </div>
+            <div class="panel-body">
+                <label>
+                    Id:
+                    <input type="text" v-model="id">
+                </label>
+                <label>
+                    Name:
+                    <input type="text" v-model="name">
+                </label>
+                <label>
+                    搜索名字关键字:
+                    <input type="text" v-model="keywords">
+                </label>
+                <input type="button" value="添加" @click="add">
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Ctime</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in search(keywords)" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td v-text="item.name"></td>
+                    <td>{{item.ctime | dateFormat('')}}</td>
+                    <td>
+                        <a href="#" @click.prevent="del(item.id)">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        // 全局过滤器，所有的vm实例都共享
+        // Vue.filter('dateFormat', function (value, pattern) {
+        //     var date = new Date(value);
+        //     var y = date.getFullYear();
+        //     var m = date.getMonth() + 1;
+        //     var d = date.getDate();
+        //     // return y+'年'+m+'月'+d
+
+        //     if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+        //         return y + '年' + m + '月' + d
+        //     } else {
+        //         var hh = date.getHours()
+        //         var mm = date.getMinutes()
+        //         var ss = date.getSeconds()
+        //         return y + '年' + m + '月' + d + '日' + hh + '小时' + mm + '分钟' + ss + '秒'
+        //     }
+        // })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                id: '',
+                name: '',
+                keywords: '',
+                ctime: new Date(),
+                list: [{
+                        id: 1,
+                        name: '奔驰',
+                        ctime: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: '宝马',
+                        ctime: new Date()
+                    }
+                ]
+            },
+            methods: {
+                add() {
+                    this.list.push({
+                        id: this.id,
+                        name: this.name,
+                        ctime: new Date()
+                    });
+                },
+                del(id) { //根据id删除数据
+                    // 分析:
+                    // 1.如何根据id找到要删除这一项的索引
+                    // 2.如果找到了,直接调用数组的splice()方法
+                    // this.list.some((item,i)=>{
+                    //     if(item.id == id){
+                    //         this.list.splice(i,1)
+                    //         //在数组的some方法中，如果return true,那么就会立即终止这个数组的后续循环
+                    //         return true;
+                    //     }
+                    // })
+
+                    var index = this.list.findIndex(item => {
+                        if (item.id == id) {
+                            return true;
+                        }
+                    })
+                    this.list.splice(index, 1);
+                },
+                search(keywords) { //根据关键字进行数据的搜索
+                    // var newList = []
+                    // this.list.forEach(item => {
+                    //     if(item.name.includes(keywords)){
+                    //         newList.push(item);
+                    //     }
+                    // })
+                    // return newList
+
+                    return this.list.filter(item => {
+                        if (item.name.includes(keywords)) {
+                            return item
+                        }
+                    })
+
+                },
+            },
+            //私有过滤器
+            filters: { //定义私有过滤器 过滤器两个条件：（过滤器名称和处理函数）
+                // 过滤器调用的时候采用的私有原则，当私有过滤器和全局过滤器名称一致时，优先调用私有过滤器
+                dateFormat: function (value,pattern) {
+                    console.log("呵呵"); //该方法没有执行
+                    var dt = new Date(value);
+                    var y = dt.getFullYear();
+                    var m = dt.getMonth() + 1;
+                    var d = dt.getDate();
+                    if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+                        return y + '年' + m + '月' + d + '日';
+                    } else {
+                        var hh = dt.getHours()
+                        var mm = dt.getMinutes()
+                        var ss = dt.getSeconds()
+                        return y + '年' + m + '月' + d + '日' + hh + '小时' + mm + '分钟' + ss + '秒'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
