@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue示例3</title> 
+    </head>
+    <body>
+        <div id = "app"></div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            // var app = new Vue({
+            //     // el: document.getElementById('app')等价于下面的
+            //     el: '#app',
+            //     data: {
+            //         a: 2
+            //     }
+            // })
+            // console.log(app.a);//在控制台上显示出来2
+
+
+            var mydata = {
+                a: 1
+            }
+            var app = new Vue({
+                el: '#app',
+                data: mydata
+            })
+            console.log(app.a);
+            //修改属性原数据也会随之修改
+            app.a = 2;
+            console.log(mydata.a);
+            //反之修改原数据，vue属性也会修改
+            mydata.a = 3;
+            console.log(app.a);
+        </script>
+    </body>
+</html>

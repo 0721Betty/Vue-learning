@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>组件练习二</title>
+    </head>
+    <body>
+       <div id="app">
+            <my-mother></my-mother>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-mother',{
+                template:`
+                        <div>
+                            <input type="text" v-model="obj">
+                            <button v-on:click="but">添加</button>
+                            <my-name v-bind:arrs="arr"></my-name>
+                        </div>
+                    `,
+                    data:function(){
+                        return{
+                            arr:["吃饭","睡觉","打豆豆"],
+                            obj:''
+             
+                        }
+                    },
+                    methods:{
+                        but:function(){
+                            this.arr.push(this.obj)
+                            this.obj=''
+                        }
+                    }
+                })
+                Vue.component('my-name',{
+                    props:['arrs'],
+                    template:`
+                        <ul>
+                            <li v-for="(value,index) in arrs">{{value}}<button v-on:click="shan(index)">删除</button></li>
+                        </ul>
+                    `,
+                    methods:{
+                        shan:function(index){
+                            this.arrs.splice(index,1)
+                        }
+                    }
+                })
+                new Vue({
+                    el:'#app'
+                })
+            </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+`       <title>指令与事件1</title>
+    </head>
+    <body>
+        <!-- <div id="app">
+            <p v-if="show">这是一段文本</p>
+            <button v-on:click="handleClose">点击隐藏</button>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            // v-on（缩写为@）用来绑定事件监听器，便于交互
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    show: true
+                },
+                methods:{
+                    handleClose:function (){
+                        this.show = false;
+                    }
+                }
+            })
+            
+        </script> -->
+
+
+        <!-- 方法二 -->
+        <div id="app">
+            <p v-if = "show">这是一段文本</p>
+            <button v-on:click = "show = false ">点击隐藏</button>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    show: true
+                }
+            })
+        </script>
+
+    </body>
+</html>

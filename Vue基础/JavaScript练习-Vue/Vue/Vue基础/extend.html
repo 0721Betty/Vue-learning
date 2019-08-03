@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>extend选项</title> 
+    </head>
+    <body>
+        <div id = "app">
+            ${ num }
+            <p><button @click="increase">add</button></p>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var extendsObj={
+                updated:function(){
+                    console.log('我是扩展的updated');
+                },
+                methods:{
+                    // 不会被执行
+                    increase:function(){
+                        console.log('我是扩展出来的方法');
+                        this.num++;
+                    }
+                }
+            }
+           
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    num:1
+                },
+                methods:{
+                    increase:function(){
+                        console.log('我是原生的方法');
+                        this.num++;
+                    }
+                },
+                updated:function(){
+                    console.log('我是原生的update');
+                },
+                extends:extendsObj,
+                delimiters:['${','}']
+            }) 
+        </script>
+    </body>
+</html>

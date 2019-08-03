@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+`       <title>指令与事件</title>
+    </head>
+    <body>
+        <div id="app">
+            <a v-bind:href="url">链接</a>
+            <img v-bind:src="imgUrl">
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            // v-bind（缩写为:）的基本用途是动态更新HTML元素上的属性
+            var app  = new Vue({
+                el: "#app",
+                data:{
+                    url: 'https://www.github.com',
+                    imgUrl: 'http://xxx.xxx.xx/img.png'
+                }
+            })
+            
+        </script>
+    </body>
+</html>

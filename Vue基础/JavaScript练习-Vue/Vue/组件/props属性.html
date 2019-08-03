@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>props属性</title>
+    </head>
+    <body>
+        <!-- <div id = "app">
+            <jbcomponent here = "China"></jbcomponent>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                components:{
+                    "jbcomponent":{
+                        template:'<div>局部组件{{ here }}</div>',
+                        props:['here']
+                    }
+                }
+            })
+            
+        </script> -->
+
+        <!-- 在构造器里向组件传值 -->
+        <div id = "app">
+                <jbcomponent :here = "message"></jbcomponent>
+            </div>
+            <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+            <script>
+                var app = new Vue({
+                    el:'#app',
+                    data:{
+                        message:'sichuan'
+                    },
+                    components:{
+                        "jbcomponent":{
+                            template:'<div>局部组件{{ here }}</div>',
+                            props:['here']
+                        }
+                    }
+                })
+                
+            </script>
+    </body>
+</html>

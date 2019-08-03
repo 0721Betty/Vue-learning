@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>单向数据流</title>
+    </head>
+    <body>
+        <!-- <div id = "app">
+            <my-component :init-count = "1"></my-component>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component',{
+                props:['initCount'],
+                template: '<div>{{ count }}</div>',
+                data: function(){
+                    return {
+                        count: this.initCount
+                    }
+                }
+            });
+            var app = new Vue({
+                el:'#app'
+            })
+            // 组件中声明了数据count，它在组件初始化时会获取来自父组件的initCount，之后就与之无关了，只用维护count，这样就可以
+            //避免直接操作initCount
+        </script> -->
+
+
+        <div id = "app">
+            <my-component :width = "100"></my-component>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component',{
+                propos: ['width'],
+                template: '<div :style = "style">组件内容</div>',
+                computed:{
+                    style: function(){
+                        return {
+                            width: this.width + 'px'
+                        }
+                    }
+                }
+            });
+            var app = new Vue({
+                el:'#app'
+            })  
+        </script>
+    </body>
+</html>

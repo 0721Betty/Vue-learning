@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta  charset="UTF-8">
+        <title>选择列表</title>
+    </head>
+    <body>
+        <!-- <div id = "app">
+            <select v-model = "selected">
+                <option>html</option>
+                <option value="js">JavaScript</option>
+                <option>css</option>
+            </select>
+            <p>选择的项是：{{ selected }}</p>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    selected: 'html'
+                }
+            })
+        </script> -->
+
+
+        <!-- <div id = "app">
+            <select v-model = "selected" multiple>
+                 添加属性multiple就可以多选了 
+                <option>html</option>
+                <option value="js">JavaScript</option>
+                <option>css</option>
+            </select>
+            <p>选择的项是:{{  selected }}</p>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    selected: ['html','js']
+                }
+            })
+        </script> -->
+
+        <div id = "app">
+            <select v-model = "selected">
+                <option v-for = "option in options" :value = "option.value">{{ option.text}}</option>
+            </select>
+            <p>选择的项是:{{selected}}</p>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    selected: 'html',
+                    options:[
+                        {
+                            text:'HTML',
+                            value:'html'
+                        },
+                        {
+                            text:'JavaScript',
+                            value:'js'
+                        },
+                        {
+                            text:'CSS',
+                            value:'css'
+                        }
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>

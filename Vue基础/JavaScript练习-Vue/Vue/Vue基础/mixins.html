@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>mixins混入选项</title> 
+    </head>
+    <body>
+        <div id = "app">
+           <p>{{num}}</p>
+           <p><button @click="increase">add</button></p>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var addConsole={
+                //生命周期
+                updated:function(){
+                    console.log('数据发生变化，变成了'+this.num);
+                }
+            };
+            Vue.mixin({
+                updated:function(){
+                    console.log('我是全局的混入');
+                }
+            });
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    num:1
+                },
+                methods:{
+                    increase:function(){
+                        this.num++;
+                    }
+                },
+                updated:function(){
+                    console.log('我是原生的update');
+                },
+                mixins:[addConsole]
+            }) 
+        </script>
+    </body>
+</html>

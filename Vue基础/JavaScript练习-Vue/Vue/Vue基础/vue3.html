@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>生命周期</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 大括号里面的内容被替换为《Vue.js实践》 -->
+            {{ book }}
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            // var app = new Vue({
+            //     el: '#app',
+            //     data: {
+            //         a: 2
+            //     },
+            //     created: function (){
+            //         console.log(this.a);//2
+            //     },
+            //     mounted:  function(){
+            //         console.log(this.$el);//<div id="app"></div>
+            //     }
+            // })
+        
+            //插值表达式
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    book: '《Vue.js实践》'
+                }
+            })
+
+
+
+        </script>
+    </body>
+</html>

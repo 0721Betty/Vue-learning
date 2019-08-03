@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>globalComponent</title>
+    </head>
+    <body>
+        <!-- 全局组件 -->
+        <div id = "app">
+            <my-component></my-component>       
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component',{
+                template:`<div>全局化注册的my-component标签</div>`
+            });
+            var app = new Vue({
+                el:'#app',
+            })
+        </script>
+    </body>
+</html>

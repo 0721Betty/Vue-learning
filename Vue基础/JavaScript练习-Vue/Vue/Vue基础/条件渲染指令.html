@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>条件渲染指令</title>
+        
+    </head>
+    <body>
+        <!-- <div id="app">
+            <p v-if="status===1">当status===1时显示该行</p>
+            <p v-else-if="status===2">当status为2时显示该行</p>
+            <p v-else>否则显示该行</p>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    status:1
+                }
+            })
+        </script> -->
+
+
+        <div id="app">
+            <template v-if="type === 'name'">
+                <label>用户名：</label>
+                <input placeholder="输入用户名" key = "name-input">
+                <!-- key可以让输入框中的内容不被复用 -->
+            </template>
+            <template v-else>
+                    <label>邮箱：</label>
+                    <input placeholder="输入邮箱" key = "mail-input">
+            </template>
+            <button @click="handleToggleClick">切换输入类型</button>
+            <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+            <script>
+                var app = new Vue({
+                    el:"#app",
+                    data:{
+                        type:'name'
+                    },
+                    methods:{
+                        handleToggleClick: function(){
+                            this.type = this.type === 'name' ? 'mail':'name';
+                        }
+                    }
+                })
+            </script>
+        </div>
+    </body>
+</html>

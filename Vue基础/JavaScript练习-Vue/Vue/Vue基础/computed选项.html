@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>computed选项</title> 
+    </head>
+    <body>
+        <div id = "app">
+            <p>{{ newPrice }}</p>
+            <ul>
+                <li v-for="item in reversNews">{{ item.title }}-{{item.date}}</li>
+            </ul>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var newList=[
+                {title:'江西理工大学应用科学学院',date:'2019/3/16'},
+                {title:'赣南师范大学',date:'2019/3/17'},
+                {title:'南昌大学',date:'2019/3/18'},
+                {title:'江西师范大学',date:'2019/3/19'}
+            ]
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    price:100,
+                    newList:newList
+                },
+                computed:{
+                    newPrice:function(){
+                        return this.price = '￥' + this.price + '元'; 
+                    },
+                    reversNews:function(){
+                        return this.newsList.reverse();
+                        // 有bug
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

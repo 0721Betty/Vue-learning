@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <!-- <div id="app" :style="{'color':color,'fontSize':fontSize+'px'}">文本</div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    color: 'red',
+                    fontSize: 14
+                }
+            })
+        </script> -->
+
+
+        <!-- 方法二 -->
+        <div id="app" :style = "styles">文本</div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data: {
+                    styles: {
+                        color: 'red',
+                        fontSize: 14 +'px'
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>

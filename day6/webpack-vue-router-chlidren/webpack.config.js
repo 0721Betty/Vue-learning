@@ -26,8 +26,13 @@ module.exports = {
       })
    ],
    module: { // 这个节点，用于配置所有第三方模块加载器
-      rules: [ 
-         { test: /\.vue$/, use: 'vue-loader'}
+      rules: [
+         {test: /\.css$/, use: ['style-loader','css-loader']}, 
+         { test: /\.vue$/, use: 'vue-loader'},
+         {
+            test: /\.(woff?|eot|ttf|otf|svg|woff2)(\?.*)?$/,
+            use: [ 'url-loader' ]
+         }
       ]
 
    }

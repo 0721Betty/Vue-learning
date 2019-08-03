@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件</title>
+</head>
+<body>
+    <div id="app">
+      <my-component></my-component>  
+    </div>
+    <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+       var city={
+           template:`<div>Sichuan of China</div>`
+       }
+        var child = {
+            // 用反单引号``
+            template:`<div>
+                    <p> Panda from China!</p>
+                    <city></city>
+            </div>`,
+            components:{
+                "city":city
+            }
+        }
+        var app=new Vue({
+            el:'#app',
+            components:{
+                "my-component":child
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>v-cloak指令</title>
+        <style type="text/css">
+            [v-block]{
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            {{message}}
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            // v-cloak 解决初始化慢导致页面闪动的最佳实践
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    message:'这是一段文本'
+                }
+            })
+        </script>
+    </body>
+</html>

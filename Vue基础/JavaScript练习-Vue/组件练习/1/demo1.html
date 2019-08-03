@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>组件练习一</title>
+    </head>
+    <body>
+        <div id="app">
+            <my-main></my-main>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-main',{
+                template:`
+                    <div class="container">
+                        <table class="table table-bordered text-center" border="1">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">编号</th>
+                                    <th class="text-center">名称</th>
+                                    <th class="text-center">单价</th>
+                                    <th class="text-center">数量</th>
+                                    <th class="text-center">总价</th>
+                                </tr>
+                            </thead>
+                            <my-tr v-bind:arrs="list"></my-tr>
+                        </table>
+                    </div>
+                        `,
+                data:function(){
+                    return{
+                        list:[
+                            {pname:'apple',price:3,count:2,sub:6},
+                            {pname:'pear',price:4,count:3,sub:12},
+                            {pname:'banana',price:5,count:4,sub:20}
+                        ]
+                    }
+                }
+            })
+            Vue.component('my-tr',{
+                props:['arrs'],
+                template:`
+                    <tbody>
+                        <tr v-for="(value,index) in arrs">
+                            <td>{{index+1}}</td>
+                            <td>{{value.pname}}</td>
+                            <td>{{value.price}}</td>
+                            <td>
+                                <button @click='add(index)'>+</button>
+                                <span>{{value.count}}</span>
+                                <button @click='redu(index)'>-</button>
+                            </td>
+                            <td>{{value.sub}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">总价：￥{{sum}}</td>
+                        </tr>
+                    </tbody>
+                 
+                        `,
+                data:function(){
+                    return{
+                        sum:38
+                    }
+                },
+                methods:{
+                    add:function(ind){
+                        //数量
+                        this.arrs[ind].count++;
+                        //改变小计
+                        this.arrs[ind].sub=this.arrs[ind].count*this.arrs[ind].price;
+                        this.total();
+                    },
+                    redu:function(ind){
+                        //数量
+                        if(this.arrs[ind].count>0){
+                            this.arrs[ind].count--;
+                        }
+                        //小计
+                        this.arrs[ind].sub=this.arrs[ind].count*this.arrs[ind].price;
+                        this.total();
+                    },
+                    total: function () {
+                        for (var i = 0, tota = 0; i < this.arrs.length; i++) {
+                            tota += this.arrs[i].sub
+                        }
+                        this.sum = tota
+                    }
+                }
+            })
+            new Vue({
+                el:'#app'
+            })
+        </script>
+
+    </body>
+</html>

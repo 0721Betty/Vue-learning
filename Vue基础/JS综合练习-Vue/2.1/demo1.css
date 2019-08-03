@@ -1,0 +1,90 @@
+[v-cloak]{
+    display: none;
+}
+body,input,button,textarea,div{
+    margin:0;
+    padding:0;
+}
+#app{
+    margin:20px 15px;
+}
+.options{
+    margin-top:13px;
+}
+.options input[type=radio]:not(:first-child){
+    margin-left:13px;
+}
+.options input[type=radio]{
+    margin-right:5px;
+}
+.options input[type=checkbox]:not(:first-child){
+    margin-top:15px;
+}
+.options input[type=checkbox]{
+    margin-right:5px;
+}
+.not_display{
+    display: none;
+}
+textarea{
+    /*padding:50px 85px;*/
+    margin-left:11px;
+    margin-top:9px;
+}
+.able_color{
+    color:#3399ff;
+}
+.disable_color{
+    color:#808080;
+}
+.restart-color{
+    color:#fff;
+}
+.big-size{
+    width:200px;
+}
+.small-size{
+    width:150px;
+}
+.step_bottom{
+    height:35px;
+    width:100%;
+    position: absolute;
+    bottom: 30px;
+}
+button{
+    background-color: transparent;
+    outline: none;
+    border:1px solid #cccccc;
+    border-radius: 5px;
+}
+.buttonOne{
+    padding:7px 30px;
+    margin-right:10px;
+    width:45%;
+}
+input[type=submit]{
+    width:29%;
+    height:32px;
+    margin-right:7px;
+    border:1px solid #cccccc;
+    border-radius: 5px;
+}
+/*.buttonOne:hover{*/
+/*background-color:#cccccc;*/
+/*border:1px solid #cccccc;*/
+/*}*/
+.greyColor{
+    background-color:#808080;
+    border:1px solid #808080;
+    color:#fff;
+}
+.disabledColor{
+    background-color:#cccccc;
+    border:1px solid #cccccc;
+}
+.second_quesiton button{
+    padding:7px 30px;
+    width:30%;
+    margin-right:5px;
+}

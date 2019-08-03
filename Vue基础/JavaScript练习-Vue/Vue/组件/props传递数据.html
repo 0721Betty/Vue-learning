@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>props传递数据</title>
+    </head>
+    <body>
+        <!-- <div id = "app">
+            <my-component message = "来自父组件的数据"></my-component>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component',{
+                props:['message'],
+                template:'<div>{{ message }}</div>'
+            });
+            var app = new Vue({
+                el:'#app',
+            })
+        </script> -->
+
+
+
+        <!-- <div id = "app">
+            <my-component warning-text = "提示信息"></my-component>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component',{
+                props:['warningText'],
+                template:'<div>{{ warningText }}</div>'
+            });
+            var app = new Vue({
+                el:'#app'
+            })
+        </script> -->
+
+
+        <div id = "app">
+            <input type="text" v-model = "parentMessage">
+            <my-component :message = "parentMessage"></my-component>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component',{
+                props:['message'],
+                template:'<div>{{ message }}</div>'
+            });
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    parentMessage:''
+                }
+            })
+        </script>
+    </body>
+</html>

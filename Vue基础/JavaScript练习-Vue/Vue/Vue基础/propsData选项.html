@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>propsData选项（option）</title> 
+    </head>
+    <body>
+        <header></header>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var header_a = Vue.extend({//扩展
+                template:`<p>{{ message }}</p>`,
+                data:function(){
+                    return {
+                        message:'hello,I am header!'
+                    }
+                }
+            });
+
+            new header_a({propsData:{a:12}}).$mount('header');//挂载
+        </script>
+    </body>
+</html>

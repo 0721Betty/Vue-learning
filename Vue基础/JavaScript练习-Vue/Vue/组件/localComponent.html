@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>localComponent</title>
+    </head>
+    <body>
+        <!-- 局部组件 -->
+        <div id = "app">
+            <jbcomponent></jbcomponent>       
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            
+            var app = new Vue({
+                el:'#app',
+                // 局部注册写在构造器里面且是components加了s
+                components:{
+                    "jbcomponent":{
+                        template:`<div style="color:red;">局部注册的jbcomponent标签</div>`
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

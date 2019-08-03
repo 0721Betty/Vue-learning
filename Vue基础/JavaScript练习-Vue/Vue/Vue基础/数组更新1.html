@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>数组更新1</title>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <template v-for = "book in books">
+                    <li>书名：{{book.name}}</li>
+                    <li>作者：{{book.author}}</li>
+                </template>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    books:[
+                        {
+                            name: '《Vue.js实战》',
+                            author: '梁英'
+                        },
+                        {
+                            name: '《JavaScript语言精粹》',
+                            author: 'Douglas Crockford'
+                        },
+                        {
+                            name: '《JavaScript高级程序设计》',
+                            author: 'Nicholas C.Zakas'
+                        }
+                    ]
+                }
+            });
+            // apps.books = app.books.filter(function (item){
+            //     return item.name.match(/JavaScript/);
+            // });
+
+
+
+            // Vue.set(app.books,3,{
+            //     name: '《CSS揭秘》',
+            //     author: '[希] Lea Verou'
+            // });
+
+
+            // app.books.splice(3,1,{
+            //     name:'《CSS揭秘》',
+            //     author:'[希] Lea Verou'
+            // })
+
+
+            app.books.splice(1);
+        </script>
+    </body>
+</html>

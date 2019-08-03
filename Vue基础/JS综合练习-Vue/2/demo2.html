@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>调查问卷WebApp</title>
+        <link rel="stylesheet" href="demo2.css">
+    </head>
+    <body>
+        <!-- 待改：单选必须要选择
+            多选最少选2项最多选3项
+            文本框输入不能少于100字，当前页不满足验证要求，则下一步的按钮置灰，不可点击,
+            按钮要制作成组件，可以控制颜色，状态（禁用），点击后传递一个自定义事件on-click 
+        -->
+        <div id = "app">
+            <form id="first" v-show = "status===0" v-cloak >
+                1.请问你的性别是:<br>
+                <input type="radio" name="sex" id="man">男
+                <input type="radio" name="sex" id="woman">女
+                <input type="radio" name="sex" id="secret">保密<br>
+                <!-- 下一步按钮 -->
+                <myNextButton></myNextButton>
+
+                <!-- <input type="button" value="下一步" id="next" @click="xia" onclick="checked();"> -->
+                <!-- 重置 -->
+                <input type="reset" />
+            </form>
+            <form id="second" v-show = "status===1" v-cloak>
+                2.请选择您的兴趣爱好:<br>
+                <input type="checkbox">看书<br>
+                <input type="checkbox">游泳<br>
+                <input type="checkbox">跑步<br>
+                <input type="checkbox">看电影<br>
+                <input type="checkbox">听音乐<br>
+                <!-- <input type="button" value="上一步" @click="shang"> -->
+                <!-- 下一步按钮 -->
+                <myNextButton></myNextButton>
+
+                <!-- <input type="button" value="下一步" @click="xia"> -->
+                <!-- 重置 -->
+                <input type="reset">
+            </form>
+            <form id="third" v-show = "status===2" v-cloak>
+                3.请介绍一下自己:<br>
+                <textarea cols="30" rows="10" placeholder="不少于100字"></textarea><br>
+                <input type="submit" value="提交">
+                <!-- <input type="button" value="上一步" @click="shang"> -->
+                <input type="reset">
+            </form>   
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="demo2.js"></script>
+    </body>
+</html>

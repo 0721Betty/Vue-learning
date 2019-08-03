@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>template制作模板的三种形式</title>
+    </head>
+    <body>
+        <!-- 选项里的模板 -->
+        <!-- <div id = "app">
+            <p>{{message}}</p>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    message:'Hello vue'
+                },
+                template:`
+                    <h1 style = "color:red;">我是选项模板！</h1>
+                `
+            })
+        </script> -->
+
+
+        <!-- 写在template标签里的模板 -->
+        <!-- <div id = "app">
+            <template id="demo2">
+                <h1 style="color:green;">我是写在template标签里的模板</h1>
+            </template>  
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                template:'#demo2'       
+            })
+        </script> -->
+
+
+        <!-- 写在script标签里的模板 -->
+        <div id = "app">
+            <script type="x-template" id="demo3">
+                <h2 style= "color:blue;">我是script标签模板</h2>
+            </script>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                template:'#demo3'
+            })
+        </script>
+    </body>
+</html>

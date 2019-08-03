@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>watch选项</title> 
+    </head>
+    <body>
+        <div id = "app">
+            <p>今日温度：{{wendu}}</p>
+            <p>穿衣建议：{{chuanyi}}</p>
+            <p>
+                <button @click="increase">升高温度</button>
+                <button @click="decrease">降低温度</button>
+            </p>
+        </div>
+        <script src = "https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var chuanyiarray = ['T恤短袖','夹克长裙','棉衣羽绒服']
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    wendu:14,
+                    chuanyi:'夹克长裙'
+                },
+                methods:{
+                    increase:function(){
+                        this.wendu+=5;
+                    },
+                    decrease:function(){
+                        this.wendu-=5;
+                    }
+                },
+                // 方法一
+                // watch:{
+                //     wendu:function(newVal,oldVal){
+                //         // newVal,oldVal新温度和旧温度
+                //         if(newVal>=26){
+                //             this.chuanyi = chuanyiarray[0];
+                //         }else if(newVal<26 && newVal>0){
+                //             this.chuanyi = chuanyiarray[1];
+                //         }
+                //         else{
+                //             this.chuanyi = chuanyiarray[2];
+                //         }
+                //     }
+                // }
+            })
+            // 方法二
+            app.$watch('wendu',function(newVal,oldVal){
+                if(newVal>=26){
+                    this.chuanyi = chuanyiarray[0];
+                }else if(newVal<26 && newVal>0){
+                    this.chuanyi = chuanyiarray[1];
+                }
+                else{
+                    this.chuanyi = chuanyiarray[2];
+                }
+            })
+        </script>
+    </body>
+</html>

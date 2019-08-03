@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>方法与事件1</title>
+    </head>
+    <body>
+        <!-- <div id = "app">
+            点击次数：{{counter}}
+            <button @click = "counter++">+1</button>
+        </div>
+        <script src="http://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    counter:0
+                }
+            })
+        </script> -->
+
+
+        <div id="app">
+            点击次数:{{counter}}
+            <button @click="handleAdd()">+1</button>
+            <button @click="handleAdd(10)">+10</button>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    counter:0
+                },
+                methods:{
+                    handleAdd:function(count){
+                        count = count||1;
+                        //this指向当前vue实例app
+                        this.counter +=count;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

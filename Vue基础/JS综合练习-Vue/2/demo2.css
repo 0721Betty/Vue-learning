@@ -1,0 +1,14 @@
+[v-cloak]{
+    display:none;
+}
+body{
+    margin:0;
+    padding: 0;
+}
+#app{
+    border: 1px solid greenyellow;
+    background-color: beige;
+    width: 300px;
+    height:400px;
+    margin: 0px auto;
+}

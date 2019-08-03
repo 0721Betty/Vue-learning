@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <title>求素数</title>
+</head>
+<body>
+    <script>
+        var primeNum = function(max){
+            var i,j;
+            var arr = [];
+            for(i = 1;i < max; i++){
+                for(j = 2;j < i;j++){
+                    if(i%j===0){
+                        break;
+                    }
+                }
+                if(i <=j&&i !=1){
+                    arr.push(i);
+                }
+            }
+            return arr;
+        };
+        document.write(primeNum(100));
+    </script>
+</body>
+</html>
+

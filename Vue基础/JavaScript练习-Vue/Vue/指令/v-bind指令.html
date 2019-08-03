@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>v-bind指令</title>
+    </head>
+    <body>
+        <div id="app">
+            <div class="{'active': isActive}"></div>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            // v-bind动态更新元素上的属性
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    isActive: true
+                }
+            })
+        </script>
+    </body>
+</html>
